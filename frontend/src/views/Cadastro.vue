@@ -1,6 +1,14 @@
 <template>
   <div class="container py-4">
     <div class="card">
+      <!-- Alert de Sucesso -->
+            <div class="alert alert-success alert-dismissible fade show" v-if="MessageSuccess" role="alert">
+                <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+                <span class="alert-text"><strong>Success!</strong> Afiliado cadastrado com sucesso!</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
       <div class="card-header">
         <h4 class="mb-0">Cadastro de Novo Afiliado</h4>
       </div>
@@ -124,6 +132,7 @@ import { useRouter } from 'vue-router'
 
 const internalInstance = getCurrentInstance()
 const apiAdress = internalInstance.appContext.config.globalProperties.$apiAdress
+const MessageSuccess = ref(false)
 
 const form = reactive({
   username: "",
@@ -164,9 +173,13 @@ const handleSubmit = () => {
   }))
 }).then(response => {
     if (!response.data.errors) {
+      MessageSuccess.value = true
+    setTimeout(() => {
+      MessageSuccess.value = false
+    }, 5000)
       setTimeout(() => {
         router.push({ path: "/dashboard-default" });
-      }, 2000);
+      }, 5001);
     }
   })
   .catch(error => {
