@@ -2,7 +2,7 @@
   <div class="container py-4">
     <div class="card">
       <div class="card-header">
-        <h4 class="mb-0">📋 Cadastro de Novo Afiliado</h4>
+        <h4 class="mb-0">Cadastro de Novo Afiliado</h4>
       </div>
       <div class="card-body">
         <form @submit.prevent="handleSubmit">
@@ -23,6 +23,7 @@
                 type="text"
                 label="Nickname / Alias"
                 placeholder="Nickname / Alias"
+                required
               />
             </div>
           </div>
@@ -51,7 +52,7 @@
           </div>
 
           <hr />
-          <h6 class="text-sm text-muted mt-3 mb-2">🔗 Referenciadores</h6>
+          <h6 class="text-sm text-muted mt-3 mb-2">Referenciadores</h6>
 
           <!-- Lista de Referenciadores -->
           <div
@@ -60,7 +61,6 @@
             class="row align-items-center mb-2"
           >
             <!-- Dropdown de Referenciador -->
-          
                   <div class="col-md-5">
                     <select
                       class="form-select form-group"
@@ -76,19 +76,18 @@
                           </option>
                     </select>
                   </div>
-            <!-- Percentagem -->
-            <div class="col-md-4">
-              <argon-input
-                v-model.number="ref.percentage"
-                type="number"
-                label="Percentagem (%)"
-                min="0"
-                max="100"
-                placeholder="Percentagem"
-                required
-              />
-            </div>
-            
+                  <!-- Percentagem -->
+                  <div class="col-md-4">
+                    <argon-input
+                      v-model.number="ref.percentage"
+                      type="number"
+                      label="Percentagem (%)"
+                      min="0"
+                      max="100"
+                      placeholder="Percentagem"
+                      required
+                    />
+                  </div>
             <div class="col-md-3 d-flex align-items-end">
               <argon-button
                 color="danger"
@@ -104,20 +103,12 @@
           <argon-button color="secondary" size="sm" @click="addReferral">
             + Adicionar Referenciador
           </argon-button>
-
           <div class="mt-4">
             <argon-button type="submit" color="success">
-              ✅ Submeter Formulário
+              Submeter Formulário
             </argon-button>
           </div>
         </form>
-
-        <div v-if="submitted" class="mt-4">
-          <h6 class="text-sm text-muted mb-2">📤 Resultado (JSON):</h6>
-          <pre class="bg-light p-3 rounded text-sm">
-              {{ JSON.stringify(form, null, 2) }}
-          </pre>
-        </div>
       </div>
     </div>
   </div>
