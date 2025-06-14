@@ -74,6 +74,13 @@ O frontend é uma aplicação Vue 3 que já está configurada para rodar no cont
 ```bash
 http://localhost
 ```
+Configurando a API entre o BackEnd e o FrontEnd:
+
+```bash
+cp .env.development .env
+
+VUE_APP_BASE_API_URL='http://localhost:8000'
+```
 Lá você vai encontrar o formulário de cadastro de afiliados.
 
 Os referenciadores são carregados dinamicamente via API.
